@@ -1,6 +1,7 @@
+sqlalchemy[asyncio]
+langchain==0.3.18
 annotated-types==0.7.0
 anyio==4.8.0
-async-timeout==5.0.1
 asyncpg==0.30.0
 beautifulsoup4==4.13.3
 certifi==2025.1.31
