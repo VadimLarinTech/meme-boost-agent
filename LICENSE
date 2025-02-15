@@ -1,21 +1,52 @@
-MIT License
+Proprietary License Agreement
 
-Copyright (c) 2025 VadimLarinTech
+Last Updated: [15.02.2025]
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+1. Introduction
+This Proprietary License Agreement ("Agreement") is a legal agreement between you ("User") and Vadim Larin ("Licensor") for the use of the software and AI model (the "Software"), including any related documentation, updates, or modifications.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+By using the Software, you agree to comply with the terms of this Agreement. If you do not agree, do not use the Software.
+2. Grant of License
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+    The Licensor grants the User a non-exclusive, non-transferable, revocable license to use the Software only for personal or internal business purposes.
+    The User is not allowed to copy, modify, distribute, sublicense, or publicly display the Software or any part of it without explicit permission from the Licensor.
+    The User may access and use the AI model only through the Licensor's official API or platform.
+
+3. Restrictions
+
+The User agrees not to:
+
+    Reverse engineer, decompile, or disassemble the Software or AI model.
+    Use the Software to create a competing product or offer a similar service.
+    Sell, rent, lease, or distribute access to the Software to third parties.
+    Use the Software for illegal, harmful, or deceptive purposes.
+    Attempt to remove, bypass, or disable security features.
+
+The Licensor reserves the right to revoke the User’s license at any time if these terms are violated.
+4. Ownership & Intellectual Property
+
+    The Software and all associated intellectual property, including AI models, algorithms, and branding, remain the exclusive property of the Licensor.
+    No rights or ownership are transferred to the User.
+    The Licensor may update or discontinue the Software at any time.
+
+5. Disclaimer of Warranty & Liability
+
+    The Software is provided "AS IS", without warranties of any kind, express or implied.
+    The Licensor is not responsible for any damages, losses, or legal issues resulting from the use of the Software.
+    The User assumes full responsibility for compliance with all applicable laws.
+
+6. Termination
+
+    This Agreement remains in effect until terminated by either party.
+    The Licensor may terminate the license immediately if the User violates any terms.
+    Upon termination, the User must stop using the Software and delete all copies.
+
+7. Governing Law & Jurisdiction
+
+    This Agreement shall be governed by the laws of [USA].
+    Any disputes shall be resolved in the courts of [USA].
+
+8. Contact Information
+
+For any inquiries regarding this Agreement, contact:
+📧 Email: [vadimlarintech@gmail.com]

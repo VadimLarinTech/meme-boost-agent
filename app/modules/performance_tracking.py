@@ -1,22 +1,20 @@
+import os
 import asyncio
 import tweepy
 from sqlalchemy import select
 from app.db.models import AccountMetric
-from sqlalchemy.ext.asyncio import AsyncSession
+from app.config import Config
+from app.db.models import async_session as db_session_maker
 
 class PerformanceTrackingModule:
     """
-    Модуль отслеживания эффективности:
-      - Получает метрики активности Twitter аккаунта (например, число подписчиков, твитов).
-      - Сохраняет полученные данные в базу.
-      - Предоставляет последние метрики для анализа эффективности.
+    Performance Tracking Module:
+      - Retrieves Twitter account metrics via Twitter API.
+      - Saves daily metrics to the database.
     """
-    def __init__(self, config: dict, db_session_maker):
-        self.config = config
-        self.db_session_maker = db_session_maker
-        # Для получения метрик аккаунта используем Tweepy (OAuth2)
-        self.client = tweepy.AsyncClient(bearer_token=config['TWITTER_BEARER_TOKEN'])
-        self.account_id = config.get("TWITTER_ACCOUNT_ID")  # ID отслеживаемого аккаунта
+    def __init__(self):
+        self.client = tweepy.Client(bearer_token=Config.TWITTER_BEARER_TOKEN)
+        self.account_id = Config.TWITTER_ACCOUNT_ID
 
     async def fetch_account_metrics(self) -> dict:
         try:
@@ -28,27 +26,31 @@ class PerformanceTrackingModule:
             account_data = {
                 "followers_count": metrics.get("followers_count", 0),
                 "tweet_count": metrics.get("tweet_count", 0),
-                # engagement_rate можно рассчитать дополнительно, если доступны нужные данные
                 "engagement_rate": 0.0  
             }
             return account_data
         except tweepy.TweepyException as e:
-            print("Ошибка при получении метрик аккаунта:", e)
             return {}
 
-    async def store_account_metrics(self, metrics: dict):
-        async with self.db_session_maker() as session:
-            new_metric = AccountMetric(
-                account_id=self.account_id,
-                followers_count=metrics.get("followers_count", 0),
-                tweet_count=metrics.get("tweet_count", 0),
-                engagement_rate=metrics.get("engagement_rate", 0.0)
-            )
-            session.add(new_metric)
-            await session.commit()
+    async def collect_daily_metrics(self):
+        """
+        Fetches account metrics and saves them in the database.
+        This task should be scheduled to run once per day.
+        """
+        data = await self.fetch_account_metrics()
+        if data:
+            async with db_session_maker() as session:
+                new_metric = AccountMetric(
+                    account_id=self.account_id,
+                    followers_count=data.get("followers_count", 0),
+                    tweet_count=data.get("tweet_count", 0),
+                    engagement_rate=data.get("engagement_rate", 0.0)
+                )
+                session.add(new_metric)
+                await session.commit()
 
     async def get_latest_metrics(self) -> dict:
-        async with self.db_session_maker() as session:
+        async with db_session_maker() as session:
             result = await session.execute(
                 select(AccountMetric).order_by(AccountMetric.timestamp.desc()).limit(1)
             )
